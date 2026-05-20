@@ -599,7 +599,7 @@ a {
   font-size: 22px;
   font-weight: 600;
   max-width: 800px;
-  margin: 0 auto 16px auto;
+  margin: 0 auto 40px auto;
   line-height: 1.2;
   letter-spacing: normal;
 }
@@ -1411,4 +1411,64 @@ a {
   .features-grid {
     gap: 40px;
   }
+}
+
+/* Manifesto / Why We Built This Section */
+.manifesto-section {
+  background-color: var(--bg-secondary);
+  padding: 100px 0;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.manifesto-content {
+  max-width: 800px;
+  margin: 0 auto;
+  border-left: 2px solid var(--accent);
+  padding-left: 40px;
+}
+
+.manifesto-title {
+  font-family: var(--font-sans);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 24px;
+  color: var(--fg-primary);
+}
+
+.manifesto-text {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  color: var(--fg-secondary);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.manifesto-text:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .manifesto-content {
+    padding-left: 24px;
+  }
+  
+  .manifesto-title {
+    font-size: 26px;
+  }
+  
+  .manifesto-text {
+    font-size: 16px;
+  }
+}
+
+/* Footer logo spacing class */
+.footer-brand .logo {
+  margin-bottom: 16px;
+}
+
+/* Pricing feature style */
+.pricing-feature-bold {
+  font-weight: 700;
 }

@@ -183,7 +183,7 @@ export default function Home() {
       <section className="directories-section" id="directories">
         <div className="container">
 
-          <h2 className="directories-heading" style={{ marginBottom: "40px" }}>Launch effortlessly to top platforms</h2>
+          <h2 className="directories-heading">Launch effortlessly to top platforms</h2>
           <div className="directories-grid">
             {DIRECTORIES.map(dir => (
               <div 
@@ -255,19 +255,14 @@ export default function Home() {
       </section>
 
       {/* Why We Built This Section */}
-      <section style={{ backgroundColor: "var(--bg-secondary)", padding: "100px 0" }}>
+      <section className="manifesto-section">
         <div className="container">
-          <div style={{
-            maxWidth: "800px",
-            margin: "0 auto",
-            borderLeft: "2px solid var(--accent)",
-            paddingLeft: "40px"
-          }}>
-            <h2 style={{ fontSize: "32px", fontWeight: "700", letterSpacing: "-0.5px", marginBottom: "24px", color: "var(--fg-primary)" }}>Why we built FastLaunch</h2>
-            <p style={{ fontSize: "18px", color: "var(--fg-secondary)", lineHeight: "1.8", marginBottom: "20px" }}>
+          <div className="manifesto-content">
+            <h2 className="manifesto-title">Why we built FastLaunch</h2>
+            <p className="manifesto-text">
               As serial founders, we spent hundreds of hours tailoring different product descriptions and manually filling out completely different submission forms for every single directory platform, only to wait weeks for approvals just to get our first 100 users.
             </p>
-            <p style={{ fontSize: "18px", color: "var(--fg-secondary)", lineHeight: "1.8" }}>
+            <p className="manifesto-text">
               We realized that the initial distribution phase of a startup is incredibly tedious but absolutely necessary for early SEO momentum. We built FastLaunch to automate this entirely. One click, instant authority, and zero wasted time.
             </p>
           </div>
@@ -318,7 +313,7 @@ export default function Home() {
                   Get Launch Unlimited
                 </button>
                 <div className="pricing-features">
-                  <div className="pricing-feature"><Check size={14} /><span style={{ fontWeight: "700" }}>Unlimited Startups</span></div>
+                  <div className="pricing-feature"><Check size={14} /><span className="pricing-feature-bold">Unlimited Startups</span></div>
                   <div className="pricing-feature"><Check size={14} /><span>Submission to 20 Directories</span></div>
                   <div className="pricing-feature"><Check size={14} /><span>Instant Priority Queue API</span></div>
                   <div className="pricing-feature"><Check size={14} /><span>Auto SEO indexing refreshers</span></div>
@@ -398,7 +393,7 @@ export default function Home() {
         <div className="container">
           <div className="footer-top">
             <div className="footer-brand">
-              <a href="#" className="logo" style={{ marginBottom: "16px" }}>
+              <a href="#" className="logo">
                 INDENTED
               </a>
               <p className="footer-desc">
