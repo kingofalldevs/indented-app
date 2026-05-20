@@ -1,0 +1,457 @@
+"use client";
+
+import React, { useState, useEffect, useRef } from "react";
+import { 
+  Check, 
+  ArrowRight, 
+  Plus, 
+  ShieldCheck, 
+  Zap, 
+  Flame, 
+  Award, 
+  Users, 
+  Sparkles
+} from "lucide-react";
+
+// List of 20 directories you can launch into
+const DIRECTORIES = [
+  { id: "saashub", name: "SaaSHub", category: "SaaS Alternatives", description: "The independent software marketplace helping you discover new tools and high-authority alternative listings.", domain: "saashub.com" },
+  { id: "uneed", name: "Uneed", category: "Tool Discovery", description: "A highly-curated directory showcasing the best and most useful startup tools and creator resources.", domain: "uneed.best" },
+  { id: "alternativeto", name: "AlternativeTo", category: "Software Search", description: "The definitive crowdsourced search engine for finding free, paid, or open-source software alternatives.", domain: "alternativeto.net" },
+  { id: "producthunt", name: "Product Hunt", category: "SaaS Launchpad", description: "The premier global discovery platform for new technology products, web apps, and tech creations.", domain: "producthunt.com" },
+  { id: "betalist", name: "BetaList", category: "Early Stage", description: "Providing early adopters and founders a place to launch, gather feedback, and build initial pre-launch audiences.", domain: "betalist.com" },
+  { id: "appsumo", name: "AppSumo", category: "Software Deals", description: "The largest digital marketplace for software deals, helping startups scale with lifetime tech stack offers.", domain: "appsumo.com" },
+  { id: "startupbase", name: "Startup Base", category: "Founder Community", description: "A professional platform for tech founders to share their software, gain early adopters, and track growth.", domain: "startupbase.io" },
+  { id: "startuppitch", name: "Startup Pitch", category: "Media & Reviews", description: "Pitch your startup directly to tech journalists, developers, and early adopters to secure first reviews.", domain: "startuppitch.co" },
+  { id: "pitchwall", name: "PitchWall", category: "Discovery Hub", description: "A beautiful, interactive wall-based showcase designed to put newly launched tools in front of investors.", domain: "pitchwall.co" },
+  { id: "stackshare", name: "StackShare", category: "Tech Stack Index", description: "Allows developers and founders to share, explore, and analyze the technology stacks of leading software brands.", domain: "stackshare.io" },
+  { id: "g2", name: "G2 Crowd", category: "Software Reviews", description: "The global gold-standard platform for peer-to-peer business software reviews and enterprise comparisons.", domain: "g2.com" },
+  { id: "capterra", name: "Capterra", category: "B2B Software", description: "A top-tier search engine and rating index helping businesses compare features and select software systems.", domain: "capterra.com" },
+  { id: "sourceforge", name: "SourceForge", category: "Open Source Hub", description: "A massive open-source development and distribution directory attracting millions of active tech searchers.", domain: "sourceforge.net" },
+  { id: "trustpilot", name: "Trustpilot", category: "Consumer Trust", description: "The world's most trusted and open review community, providing critical high-domain backlinks for SEO.", domain: "trustpilot.com" },
+  { id: "killerstartups", name: "KillerStartups", category: "Startup Directory", description: "A dedicated review platform and pitch directory that reviews newly launched web ventures and apps.", domain: "killerstartups.com" },
+  { id: "launchingnext", name: "Launching Next", category: "New Tech Index", description: "A curated digital catalog showcasing the newest startups, products, and online software solutions.", domain: "launchingnext.com" },
+  { id: "indiehackers", name: "Indie Hackers", category: "Founder Community", description: "The primary community for developers and designers building highly profitable side-hustles and indie tools.", domain: "indiehackers.com" },
+  { id: "hackernews", name: "Hacker News", category: "Tech Aggregator", description: "The premier social network and feed focused on computer science, entrepreneurship, and tech discussions.", domain: "news.ycombinator.com" },
+  { id: "reddit", name: "Reddit (r/startups)", category: "Social Community", description: "An incredibly active discussions and review space for startup founders sharing advice, ideas, and feedback.", domain: "reddit.com" },
+  { id: "devpost", name: "Devpost", category: "Developer Showcase", description: "The leading global platform for developer portfolios, hackathons, and innovative open-source software.", domain: "devpost.com" }
+];
+
+const TESTIMONIALS = [
+  {
+    quote: "I submitted to 20 directories in under 10 minutes. The backlinks started showing up within 48 hours. Absolutely worth it.",
+    avatar: "JK",
+    name: "James K.",
+    role: "Founder, Mailblast.io"
+  },
+  {
+    quote: "Every directory has different form fields. FastLaunch handled all of that automatically. Saved me at least 15 hours of tedious work.",
+    avatar: "SR",
+    name: "Sofia R.",
+    role: "Co-founder, Trackflow"
+  },
+  {
+    quote: "Our domain authority jumped noticeably in the first month. This is the smartest $19 I've spent on early-stage growth.",
+    avatar: "AL",
+    name: "Alex L.",
+    role: "Indie Hacker, NoteSync"
+  },
+  {
+    quote: "We went from zero backlinks to a domain authority of 22 in under a month. FastLaunch did all the heavy lifting.",
+    avatar: "TD",
+    name: "Tyler D.",
+    role: "Founder, DevFlow"
+  },
+  {
+    quote: "Unbelievably simple to use. Just pasted our URL, clicked submit, and watched the entries get created.",
+    avatar: "MK",
+    name: "Min-Ji K.",
+    role: "Growth Lead, Synthetix"
+  },
+  {
+    quote: "The automated Chrome extension worked like magic. It filled out forms on 20 sites with no errors. Absolute game changer.",
+    avatar: "OW",
+    name: "Oliver W.",
+    role: "Indie Maker, Habitly"
+  },
+  {
+    quote: "As a solo developer, launching is my least favorite part. FastLaunch saved me days of manual form filling.",
+    avatar: "EM",
+    name: "Elena M.",
+    role: "Creator, PeakFocus"
+  },
+  {
+    quote: "Our Product Hunt launch was great, but the steady flow of high-quality backlinks from FastLaunch keeps our traffic growing daily.",
+    avatar: "ML",
+    name: "Marcus L.",
+    role: "Co-founder, ShipFast"
+  },
+  {
+    quote: "Excellent customer support and extremely fast indexing. Saw the first directory approvals within 24 hours.",
+    avatar: "SH",
+    name: "Sarah H.",
+    role: "CMO, SaaSify"
+  },
+  {
+    quote: "The pricing is incredibly fair. $19.90 saved me at least 20 hours of painful copy-pasting. Highly recommended.",
+    avatar: "DG",
+    name: "David G.",
+    role: "Indie Hacker, PromptBase"
+  }
+];
+
+export default function Home() {
+  // FAQ State
+  const [activeFaq, setActiveFaq] = useState<number | null>(null);
+
+  const faqs = [
+    {
+      q: "How does Indented FastLaunch speed up my SEO?",
+      a: "By launching automatically to 20+ top-tier product directories, FastLaunch builds high-quality, relevant context backlinks to your domain. Search crawlers prioritize these verified directories, rapidly boosting your initial domain authority and indexing speed in minutes instead of months."
+    },
+    {
+      q: "Which 20 directories are included in the launch?",
+      a: "Our curated selection includes high-ranking platforms: SaaSHub, Uneed, AlternativeTo, Product Hunt, BetaList, AppSumo, StackShare, G2, Capterra, SourceForge, Trustpilot, Indie Hackers, Devpost, hacker communities, and relevant sub-directories tailored for premium reach."
+    },
+    {
+      q: "Can I update my product details after submission?",
+      a: "Absolutely. With our premium plans, you get lifetime sync utilities. If you pivot or update your screenshots, descriptions, or pricing on Indented FastLaunch, our API pushes synchronous updates across all connected directories automatically."
+    },
+    {
+      q: "Is there a money-back guarantee?",
+      a: "Yes! If for any reason your startup submissions fail to index or go live on the designated platforms, we offer a full 100% money-back guarantee, no questions asked. We are a premium service committed to your success."
+    }
+  ];
+
+  return (
+    <>
+      {/* Navbar Section */}
+      <nav className="navbar">
+        <div className="container nav-container">
+          <a href="#" className="logo">
+            INDENTED
+          </a>
+          
+          <div className="nav-links">
+            <a href="#features" className="nav-link">Features</a>
+            <a href="#directories" className="nav-link">Directories</a>
+            <a href="#pricing" className="nav-link">Pricing</a>
+            <a href="#faq" className="nav-link">FAQ</a>
+          </div>
+
+          <button className="nav-cta" onClick={() => {
+            const el = document.getElementById("pricing");
+            if (el) el.scrollIntoView({ behavior: "smooth" });
+          }}>
+            Launch Now
+          </button>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <header className="hero">
+        <div className="hero-deco-box-1" />
+        <div className="hero-deco-box-2" />
+        <div className="container">
+          <div className="hero-tag">
+            <span className="hero-tag-pulse"></span>
+            Introducing FastLaunch — Agentic Launching
+          </div>
+          
+          <h1 className="hero-title">
+            Submit to different directories with AI <span>seamlessly</span>.
+          </h1>
+          
+          <p className="hero-subtitle">
+            The premium launchpad for high-velocity founders. Automatically submit your startup to 20+ top-tier directories including SaaSHub, Uneed, and AlternativeTo. Save 40+ hours of manual labor in 1 click.
+          </p>
+
+          <div className="hero-actions">
+            <button className="btn btn-primary" onClick={() => {
+              const el = document.getElementById("pricing");
+              if (el) el.scrollIntoView({ behavior: "smooth" });
+            }}>
+              Get FastLaunch <ArrowRight size={18} />
+            </button>
+          </div>
+
+
+        </div>
+      </header>
+
+      {/* Directories 2-Column Grid Showcase */}
+      <section className="directories-section" id="directories">
+        <div className="container">
+
+          <h2 className="directories-heading" style={{ marginBottom: "40px" }}>Launch effortlessly to top platforms</h2>
+          <div className="directories-grid">
+            {DIRECTORIES.map(dir => (
+              <div 
+                key={dir.id} 
+                className="directory-card"
+              >
+                <div className="dir-card-header">
+                  <div className="dir-logo-wrapper">
+                    <img
+                      src={`https://www.google.com/s2/favicons?domain=${dir.domain}&sz=64`}
+                      alt={`${dir.name} logo`}
+                      className="dir-logo-img"
+                      width={32}
+                      height={32}
+                    />
+                  </div>
+                  <div className="dir-meta">
+                    <h3 className="dir-name">{dir.name}</h3>
+                    <span className="dir-category">{dir.category}</span>
+                  </div>
+                </div>
+                <p className="dir-description">{dir.description}</p>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* Value Propositions / Features Section */}
+      <section className="faq" style={{ backgroundColor: "var(--bg-primary)", padding: "100px 0" }} id="features">
+        <div className="container" style={{ textAlign: "center" }}>
+          <h2 style={{ fontSize: "40px", fontWeight: "700", letterSpacing: "-1px", marginBottom: "24px" }}>AI-assisted submission</h2>
+          <p style={{ fontSize: "18px", color: "var(--fg-secondary)", maxWidth: "700px", margin: "0 auto 28px auto", lineHeight: "1.7" }}>
+            FastLaunch is an autonomous submission engine that launches your SaaS to dozens of high-authority platforms in minutes. By crawling your landing page, our AI agent extracts key product details and automatically fills out the custom submission forms required by each platform—securing high-quality backlinks and early SEO momentum without the manual grind.
+          </p>
+          <p style={{ fontSize: "14px", color: "var(--fg-muted)", fontWeight: "600", textTransform: "uppercase", letterSpacing: "1px", margin: "0 auto 80px auto" }}>
+            Three simple steps to automate your product launch sequence entirely:
+          </p>
+
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: "64px",
+            textAlign: "left"
+          }}>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <span style={{ fontSize: "13px", fontWeight: "600", letterSpacing: "2px", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: "24px", borderBottom: "1px solid var(--border-light)", paddingBottom: "16px" }}>01 &nbsp; // &nbsp; Submit</span>
+              <h3 style={{ fontSize: "22px", fontWeight: "600", marginBottom: "16px", color: "var(--fg-primary)", letterSpacing: "-0.5px" }}>Provide Your Website Link</h3>
+              <p style={{ fontSize: "16px", color: "var(--fg-secondary)", lineHeight: "1.7" }}>
+                Begin your product launch sequence by simply providing your primary website URL. No complicated forms or tedious data entry required to kick off your startup directory submission campaign.
+              </p>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <span style={{ fontSize: "13px", fontWeight: "600", letterSpacing: "2px", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: "24px", borderBottom: "1px solid var(--border-light)", paddingBottom: "16px" }}>02 &nbsp; // &nbsp; Extract</span>
+              <h3 style={{ fontSize: "22px", fontWeight: "600", marginBottom: "16px", color: "var(--fg-primary)", letterSpacing: "-0.5px" }}>Intelligent Agent Data Retrieval</h3>
+              <p style={{ fontSize: "16px", color: "var(--fg-secondary)", lineHeight: "1.7" }}>
+                Our advanced AI agent crawls your site to autonomously retrieve essential product data, value propositions, and SEO metadata, structuring it perfectly for high-authority backlinks.
+              </p>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <span style={{ fontSize: "13px", fontWeight: "600", letterSpacing: "2px", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: "24px", borderBottom: "1px solid var(--border-light)", paddingBottom: "16px" }}>03 &nbsp; // &nbsp; Launch</span>
+              <h3 style={{ fontSize: "22px", fontWeight: "600", marginBottom: "16px", color: "var(--fg-primary)", letterSpacing: "-0.5px" }}>Lightning-Fast Extension Autofill</h3>
+              <p style={{ fontSize: "16px", color: "var(--fg-secondary)", lineHeight: "1.7" }}>
+                Our proprietary Chrome extension instantly autofills complex submission forms across the web. Save tons of hours of manual labor while distributing your product more effectively to maximize SEO growth.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why We Built This Section */}
+      <section style={{ backgroundColor: "var(--bg-secondary)", padding: "100px 0" }}>
+        <div className="container">
+          <div style={{
+            maxWidth: "800px",
+            margin: "0 auto",
+            borderLeft: "2px solid var(--accent)",
+            paddingLeft: "40px"
+          }}>
+            <h2 style={{ fontSize: "32px", fontWeight: "700", letterSpacing: "-0.5px", marginBottom: "24px", color: "var(--fg-primary)" }}>Why we built FastLaunch</h2>
+            <p style={{ fontSize: "18px", color: "var(--fg-secondary)", lineHeight: "1.8", marginBottom: "20px" }}>
+              As serial founders, we spent hundreds of hours tailoring different product descriptions and manually filling out completely different submission forms for every single directory platform, only to wait weeks for approvals just to get our first 100 users.
+            </p>
+            <p style={{ fontSize: "18px", color: "var(--fg-secondary)", lineHeight: "1.8" }}>
+              We realized that the initial distribution phase of a startup is incredibly tedious but absolutely necessary for early SEO momentum. We built FastLaunch to automate this entirely. One click, instant authority, and zero wasted time.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="pricing" id="pricing">
+        <div className="container">
+          <div className="section-label">Investment</div>
+          <h2 className="pricing-title">Simple premium pricing</h2>
+          <p className="pricing-subtitle">
+            Automate your launch sequence completely. Choose a plan tailored to your execution scale.
+          </p>
+
+          <div className="pricing-testimonials-layout">
+            {/* Pricing Cards */}
+            <div className="pricing-grid">
+              {/* $19.90 Launch Single Card */}
+              <div className="pricing-card">
+                <span className="pricing-name">Launch Single</span>
+                <p className="pricing-desc">Perfect for launching a single SaaS product or landing page.</p>
+                <div className="pricing-price-box">
+                  <span className="pricing-price">$19.90</span>
+                  <span className="pricing-term">/ month</span>
+                </div>
+                <button className="pricing-btn pricing-btn-secondary" onClick={() => alert("Proceeding to premium secure checkout...")}>
+                  Select Launch Single
+                </button>
+                <div className="pricing-features">
+                  <div className="pricing-feature"><Check size={14} /><span>Launch 1 Startup</span></div>
+                  <div className="pricing-feature"><Check size={14} /><span>Submission to 20 Directories</span></div>
+                  <div className="pricing-feature"><Check size={14} /><span>Standard Backlink Speed</span></div>
+                  <div className="pricing-feature"><Check size={14} /><span>API Listing Reports</span></div>
+                </div>
+              </div>
+
+              {/* $50.00 Launch Unlimited Card */}
+              <div className="pricing-card premium">
+                <span className="pricing-badge">Founder Special</span>
+                <span className="pricing-name">Launch Unlimited</span>
+                <p className="pricing-desc">Launch as many startups as you can build. The ultimate execution tier.</p>
+                <div className="pricing-price-box">
+                  <span className="pricing-price">$50.00</span>
+                  <span className="pricing-term">/ month</span>
+                </div>
+                <button className="pricing-btn pricing-btn-primary" onClick={() => alert("Proceeding to premium secure checkout...")}>
+                  Get Launch Unlimited
+                </button>
+                <div className="pricing-features">
+                  <div className="pricing-feature"><Check size={14} /><span style={{ fontWeight: "700" }}>Unlimited Startups</span></div>
+                  <div className="pricing-feature"><Check size={14} /><span>Submission to 20 Directories</span></div>
+                  <div className="pricing-feature"><Check size={14} /><span>Instant Priority Queue API</span></div>
+                  <div className="pricing-feature"><Check size={14} /><span>Auto SEO indexing refreshers</span></div>
+                  <div className="pricing-feature"><Check size={14} /><span>Dedicated launch manager support</span></div>
+                </div>
+              </div>
+            </div>
+
+            {/* Testimonials */}
+            <div className="pricing-testimonials-column">
+              <div className="pricing-testimonials-wrapper">
+                <p className="pricing-testimonials-label">What founders say</p>
+                <div className="pricing-testimonials">
+                  <div className="testimonials-track">
+                    {/* Group 1 */}
+                    {TESTIMONIALS.map((t, idx) => (
+                      <div key={`g1-${idx}`} className="testimonial-card">
+                        <p className="testimonial-quote">"{t.quote}"</p>
+                        <div className="testimonial-author">
+                          <div className="testimonial-avatar">{t.avatar}</div>
+                          <div>
+                            <p className="testimonial-name">{t.name}</p>
+                            <p className="testimonial-role">{t.role}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                    {/* Group 2 (seamless clone) */}
+                    {TESTIMONIALS.map((t, idx) => (
+                      <div key={`g2-${idx}`} className="testimonial-card">
+                        <p className="testimonial-quote">"{t.quote}"</p>
+                        <div className="testimonial-author">
+                          <div className="testimonial-avatar">{t.avatar}</div>
+                          <div>
+                            <p className="testimonial-name">{t.name}</p>
+                            <p className="testimonial-role">{t.role}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Accordion Section */}
+      <section className="faq" id="faq">
+        <div className="container">
+          <div className="section-label">Questions</div>
+          <h2 className="faq-title">Frequently Asked Questions</h2>
+          <p className="faq-subtitle">Everything you need to know about FastLaunch automated indexing.</p>
+
+          <div className="faq-grid">
+            {faqs.map((faq, index) => {
+              const isActive = activeFaq === index;
+              return (
+                <div key={index} className={`faq-item ${isActive ? "active" : ""}`}>
+                  <button className="faq-question" onClick={() => setActiveFaq(isActive ? null : index)}>
+                    <span>{faq.q}</span>
+                    <Plus size={18} className="faq-icon" />
+                  </button>
+                  <div className="faq-answer">
+                    <p>{faq.a}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer Section */}
+      <footer className="footer">
+        <div className="container">
+          <div className="footer-top">
+            <div className="footer-brand">
+              <a href="#" className="logo" style={{ marginBottom: "16px" }}>
+                INDENTED
+              </a>
+              <p className="footer-desc">
+                Building premium, high-speed deployment software systems for elite modern entrepreneurs.
+              </p>
+            </div>
+
+            <div className="footer-links-grid">
+              <div>
+                <div className="footer-column-title">Product</div>
+                <ul className="footer-links">
+                  <li><a href="#simulator" className="footer-link">Simulator</a></li>
+                  <li><a href="#directories" className="footer-link">Directories</a></li>
+                  <li><a href="#pricing" className="footer-link">Pricing</a></li>
+                </ul>
+              </div>
+              
+              <div>
+                <div className="footer-column-title">Resources</div>
+                <ul className="footer-links">
+                  <li><a href="#" className="footer-link">Docs</a></li>
+                  <li><a href="#" className="footer-link">SEO Strategy</a></li>
+                  <li><a href="#" className="footer-link">Support</a></li>
+                </ul>
+              </div>
+
+              <div>
+                <div className="footer-column-title">Legal</div>
+                <ul className="footer-links">
+                  <li><a href="#" className="footer-link">Privacy</a></li>
+                  <li><a href="#" className="footer-link">Terms</a></li>
+                  <li><a href="#" className="footer-link">Refunds</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className="footer-bottom">
+            <span className="footer-copyright">
+              © {new Date().getFullYear()} Indented Inc. All rights reserved. Premium Product Automation.
+            </span>
+            <div className="footer-socials">
+              <a href="#" className="social-link"><Users size={18} /></a>
+              <a href="#" className="social-link"><Sparkles size={18} /></a>
+              <a href="#" className="social-link"><Award size={18} /></a>
+            </div>
+          </div>
+
+        </div>
+      </footer>
+    </>
+  );
+}
