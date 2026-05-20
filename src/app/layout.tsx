@@ -73,7 +73,7 @@ export default function RootLayout({
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "USD",
-        "name": "Free Trial — 1 Launch"
+        "name": "Founding Member — Free during Beta Phase"
       },
       {
         "@type": "Offer",

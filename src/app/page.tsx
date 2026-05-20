@@ -282,17 +282,17 @@ export default function Home() {
             <div className="pricing-grid">
               {/* Free Trial Card */}
               <div className="pricing-card">
-                <span className="pricing-name">Free Trial</span>
-                <p className="pricing-desc">Try FastLaunch once on us — no credit card required.</p>
+                <span className="pricing-name">Founding Member</span>
+                <p className="pricing-desc">Free launch access for early beta supporters (limited to first 100 signups).</p>
                 <div className="pricing-price-box">
                   <span className="pricing-price">$0</span>
-                  <span className="pricing-term">/ one launch</span>
+                  <span className="pricing-term">/ beta phase</span>
                 </div>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSfuvPq7rPASFY0wUuVDJT2iivYEtle29wrTK1gGoNeR6o_nuw/viewform" className="pricing-btn pricing-btn-secondary" target="_blank" rel="noopener noreferrer">
                   Join Waitlist
                 </a>
                 <div className="pricing-features">
-                  <div className="pricing-feature"><Check size={14} /><span>1 Free Launch</span></div>
+                  <div className="pricing-feature"><Check size={14} /><span>100% Free Launch</span></div>
                   <div className="pricing-feature"><Check size={14} /><span>30+ High-Authority Directories</span></div>
                   <div className="pricing-feature"><Check size={14} /><span>AI-Powered Auto-Fill</span></div>
                   <div className="pricing-feature"><Check size={14} /><span>Backlink Report Included</span></div>
