@@ -170,7 +170,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="btn btn-primary"
             >
-              Join Waitlist <ArrowRight size={18} />
+              Join our waitlist — automate up to 40+ launches for free <ArrowRight size={18} />
             </a>
           </div>
 
