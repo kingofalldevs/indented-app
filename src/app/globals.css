@@ -714,6 +714,36 @@ a {
 .pricing {
   padding: 120px 0;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--bg-primary);
+}
+
+.pricing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  background-position: center top;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.pricing::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0) 15%, var(--bg-primary) 78%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.pricing .container {
+  position: relative;
+  z-index: 3;
 }
 
 .pricing-title {
@@ -949,6 +979,14 @@ a {
 .testimonial-card:nth-child(5n) .testimonial-avatar {
   background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
   box-shadow: 0 4px 10px rgba(236, 72, 153, 0.15);
+}
+
+.testimonial-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
 }
 
 .testimonial-name {

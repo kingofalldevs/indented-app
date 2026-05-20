@@ -40,61 +40,61 @@ const DIRECTORIES = [
 const TESTIMONIALS = [
   {
     quote: "I submitted to 20 directories in under 10 minutes. The backlinks started showing up within 48 hours. Absolutely worth it.",
-    avatar: "JK",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
     name: "James K.",
     role: "Founder, Mailblast.io"
   },
   {
     quote: "Every directory has different form fields. FastLaunch handled all of that automatically. Saved me at least 15 hours of tedious work.",
-    avatar: "SR",
+    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face",
     name: "Sofia R.",
     role: "Co-founder, Trackflow"
   },
   {
     quote: "Our domain authority jumped noticeably in the first month. This is the smartest $19 I've spent on early-stage growth.",
-    avatar: "AL",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
     name: "Alex L.",
     role: "Indie Hacker, NoteSync"
   },
   {
     quote: "We went from zero backlinks to a domain authority of 22 in under a month. FastLaunch did all the heavy lifting.",
-    avatar: "TD",
+    avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&h=150&fit=crop&crop=face",
     name: "Tyler D.",
     role: "Founder, DevFlow"
   },
   {
     quote: "Unbelievably simple to use. Just pasted our URL, clicked submit, and watched the entries get created.",
-    avatar: "MK",
+    avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=face",
     name: "Min-Ji K.",
     role: "Growth Lead, Synthetix"
   },
   {
     quote: "The automated Chrome extension worked like magic. It filled out forms on 20 sites with no errors. Absolute game changer.",
-    avatar: "OW",
+    avatar: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=150&h=150&fit=crop&crop=face",
     name: "Oliver W.",
     role: "Indie Maker, Habitly"
   },
   {
     quote: "As a solo developer, launching is my least favorite part. FastLaunch saved me days of manual form filling.",
-    avatar: "EM",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
     name: "Elena M.",
     role: "Creator, PeakFocus"
   },
   {
     quote: "Our Product Hunt launch was great, but the steady flow of high-quality backlinks from FastLaunch keeps our traffic growing daily.",
-    avatar: "ML",
+    avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&fit=crop&crop=face",
     name: "Marcus L.",
     role: "Co-founder, ShipFast"
   },
   {
     quote: "Excellent customer support and extremely fast indexing. Saw the first directory approvals within 24 hours.",
-    avatar: "SH",
+    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face",
     name: "Sarah H.",
     role: "CMO, SaaSify"
   },
   {
     quote: "The pricing is incredibly fair. $19.90 saved me at least 20 hours of painful copy-pasting. Highly recommended.",
-    avatar: "DG",
+    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=face",
     name: "David G.",
     role: "Indie Hacker, PromptBase"
   }
@@ -333,7 +333,9 @@ export default function Home() {
                       <div key={`g1-${idx}`} className="testimonial-card">
                         <p className="testimonial-quote">"{t.quote}"</p>
                         <div className="testimonial-author">
-                          <div className="testimonial-avatar">{t.avatar}</div>
+                          <div className="testimonial-avatar">
+                            <img src={t.avatar} alt={`${t.name}'s avatar`} className="testimonial-avatar-img" width={36} height={36} />
+                          </div>
                           <div>
                             <p className="testimonial-name">{t.name}</p>
                             <p className="testimonial-role">{t.role}</p>
@@ -346,7 +348,9 @@ export default function Home() {
                       <div key={`g2-${idx}`} className="testimonial-card">
                         <p className="testimonial-quote">"{t.quote}"</p>
                         <div className="testimonial-author">
-                          <div className="testimonial-avatar">{t.avatar}</div>
+                          <div className="testimonial-avatar">
+                            <img src={t.avatar} alt={`${t.name}'s avatar`} className="testimonial-avatar-img" width={36} height={36} />
+                          </div>
                           <div>
                             <p className="testimonial-name">{t.name}</p>
                             <p className="testimonial-role">{t.role}</p>
