@@ -214,42 +214,39 @@ export default function Home() {
       </section>
 
       {/* Value Propositions / Features Section */}
-      <section className="faq" style={{ backgroundColor: "var(--bg-primary)", padding: "100px 0" }} id="features">
-        <div className="container" style={{ textAlign: "center" }}>
-          <h2 style={{ fontSize: "40px", fontWeight: "700", letterSpacing: "-1px", marginBottom: "24px" }}>AI-assisted submission</h2>
-          <p style={{ fontSize: "18px", color: "var(--fg-secondary)", maxWidth: "700px", margin: "0 auto 28px auto", lineHeight: "1.7" }}>
-            FastLaunch is an autonomous submission engine that launches your SaaS to dozens of high-authority platforms in minutes. By crawling your landing page, our AI agent extracts key product details and automatically fills out the custom submission forms required by each platform—securing high-quality backlinks and early SEO momentum without the manual grind.
-          </p>
-          <p style={{ fontSize: "14px", color: "var(--fg-muted)", fontWeight: "600", textTransform: "uppercase", letterSpacing: "1px", margin: "0 auto 80px auto" }}>
-            Three simple steps to automate your product launch sequence entirely:
-          </p>
+      <section className="features-section" id="features">
+        <div className="container">
+          <div className="features-header">
+            <h2 className="features-heading">AI-assisted <span>submission</span></h2>
+            <p className="features-description">
+              FastLaunch is an autonomous submission engine that launches your SaaS to dozens of high-authority platforms in minutes. By crawling your landing page, our AI agent extracts key product details and automatically fills out the custom submission forms required by each platform—securing high-quality backlinks and early SEO momentum without the manual grind.
+            </p>
+            <div className="features-subcaption">
+              Three simple steps to automate your product launch sequence entirely
+            </div>
+          </div>
 
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "64px",
-            textAlign: "left"
-          }}>
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <span style={{ fontSize: "13px", fontWeight: "600", letterSpacing: "2px", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: "24px", borderBottom: "1px solid var(--border-light)", paddingBottom: "16px" }}>01 &nbsp; // &nbsp; Submit</span>
-              <h3 style={{ fontSize: "22px", fontWeight: "600", marginBottom: "16px", color: "var(--fg-primary)", letterSpacing: "-0.5px" }}>Provide Your Website Link</h3>
-              <p style={{ fontSize: "16px", color: "var(--fg-secondary)", lineHeight: "1.7" }}>
+          <div className="features-grid">
+            <div className="feature-step-card">
+              <span className="feature-step-num">01 <span>//</span> Submit</span>
+              <h3 className="feature-step-title">Provide Your Website Link</h3>
+              <p className="feature-step-desc">
                 Begin your product launch sequence by simply providing your primary website URL. No complicated forms or tedious data entry required to kick off your startup directory submission campaign.
               </p>
             </div>
 
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <span style={{ fontSize: "13px", fontWeight: "600", letterSpacing: "2px", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: "24px", borderBottom: "1px solid var(--border-light)", paddingBottom: "16px" }}>02 &nbsp; // &nbsp; Extract</span>
-              <h3 style={{ fontSize: "22px", fontWeight: "600", marginBottom: "16px", color: "var(--fg-primary)", letterSpacing: "-0.5px" }}>Intelligent Agent Data Retrieval</h3>
-              <p style={{ fontSize: "16px", color: "var(--fg-secondary)", lineHeight: "1.7" }}>
+            <div className="feature-step-card">
+              <span className="feature-step-num">02 <span>//</span> Extract</span>
+              <h3 className="feature-step-title">Intelligent Agent Data Retrieval</h3>
+              <p className="feature-step-desc">
                 Our advanced AI agent crawls your site to autonomously retrieve essential product data, value propositions, and SEO metadata, structuring it perfectly for high-authority backlinks.
               </p>
             </div>
 
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <span style={{ fontSize: "13px", fontWeight: "600", letterSpacing: "2px", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: "24px", borderBottom: "1px solid var(--border-light)", paddingBottom: "16px" }}>03 &nbsp; // &nbsp; Launch</span>
-              <h3 style={{ fontSize: "22px", fontWeight: "600", marginBottom: "16px", color: "var(--fg-primary)", letterSpacing: "-0.5px" }}>Lightning-Fast Extension Autofill</h3>
-              <p style={{ fontSize: "16px", color: "var(--fg-secondary)", lineHeight: "1.7" }}>
+            <div className="feature-step-card">
+              <span className="feature-step-num">03 <span>//</span> Launch</span>
+              <h3 className="feature-step-title">Lightning-Fast Extension Autofill</h3>
+              <p className="feature-step-desc">
                 Our proprietary Chrome extension instantly autofills complex submission forms across the web. Save tons of hours of manual labor while distributing your product more effectively to maximize SEO growth.
               </p>
             </div>
