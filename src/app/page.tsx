@@ -272,7 +272,7 @@ export default function Home() {
       <section className="pricing" id="pricing">
         <div className="container">
           <div className="section-label">Investment</div>
-          <h2 className="pricing-title">Simple premium pricing</h2>
+          <h2 className="pricing-title">Simple transparent pricing</h2>
           <p className="pricing-subtitle">
             Automate your launch sequence completely. Choose a plan tailored to your execution scale.
           </p>
