@@ -1,15 +1,15 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { 
-  Check, 
-  ArrowRight, 
-  Plus, 
-  ShieldCheck, 
-  Zap, 
-  Flame, 
-  Award, 
-  Users, 
+import {
+  Check,
+  ArrowRight,
+  Plus,
+  ShieldCheck,
+  Zap,
+  Flame,
+  Award,
+  Users,
   Sparkles
 } from "lucide-react";
 
@@ -131,7 +131,7 @@ export default function Home() {
           <a href="#" className="logo">
             INDENTED
           </a>
-          
+
           <div className="nav-links">
             <a href="#features" className="nav-link">Features</a>
             <a href="#directories" className="nav-link">Directories</a>
@@ -139,12 +139,9 @@ export default function Home() {
             <a href="#faq" className="nav-link">FAQ</a>
           </div>
 
-          <button className="nav-cta" onClick={() => {
-            const el = document.getElementById("pricing");
-            if (el) el.scrollIntoView({ behavior: "smooth" });
-          }}>
-            Launch Now
-          </button>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfuvPq7rPASFY0wUuVDJT2iivYEtle29wrTK1gGoNeR6o_nuw/viewform" className="nav-cta" target="_blank" rel="noopener noreferrer">
+            Join Waitlist
+          </a>
         </div>
       </nav>
 
@@ -157,22 +154,24 @@ export default function Home() {
             <span className="hero-tag-pulse"></span>
             Introducing FastLaunch — Agentic Launching
           </div>
-          
+
           <h1 className="hero-title">
-            Submit to different directories with AI <span>seamlessly</span>.
+            Submit your SaaS to different directories with AI <span>seamlessly</span>.
           </h1>
-          
+
           <p className="hero-subtitle">
             The premium launchpad for high-velocity founders. Automatically submit your startup to 20+ top-tier directories including SaaSHub, Uneed, and AlternativeTo. Save 40+ hours of manual labor in 1 click.
           </p>
 
           <div className="hero-actions">
-            <button className="btn btn-primary" onClick={() => {
-              const el = document.getElementById("pricing");
-              if (el) el.scrollIntoView({ behavior: "smooth" });
-            }}>
-              Get FastLaunch <ArrowRight size={18} />
-            </button>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfuvPq7rPASFY0wUuVDJT2iivYEtle29wrTK1gGoNeR6o_nuw/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary"
+            >
+              Join Waitlist <ArrowRight size={18} />
+            </a>
           </div>
 
 
@@ -186,8 +185,8 @@ export default function Home() {
           <h2 className="directories-heading">Launch effortlessly to top platforms</h2>
           <div className="directories-grid">
             {DIRECTORIES.map(dir => (
-              <div 
-                key={dir.id} 
+              <div
+                key={dir.id}
                 className="directory-card"
               >
                 <div className="dir-card-header">
@@ -281,43 +280,43 @@ export default function Home() {
           <div className="pricing-testimonials-layout">
             {/* Pricing Cards */}
             <div className="pricing-grid">
-              {/* $19.90 Launch Single Card */}
+              {/* Free Trial Card */}
               <div className="pricing-card">
-                <span className="pricing-name">Launch Single</span>
-                <p className="pricing-desc">Perfect for launching a single SaaS product or landing page.</p>
+                <span className="pricing-name">Free Trial</span>
+                <p className="pricing-desc">Try FastLaunch once on us — no credit card required.</p>
                 <div className="pricing-price-box">
-                  <span className="pricing-price">$19.90</span>
-                  <span className="pricing-term">/ month</span>
+                  <span className="pricing-price">$0</span>
+                  <span className="pricing-term">/ one launch</span>
                 </div>
-                <button className="pricing-btn pricing-btn-secondary" onClick={() => alert("Proceeding to premium secure checkout...")}>
-                  Select Launch Single
-                </button>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfuvPq7rPASFY0wUuVDJT2iivYEtle29wrTK1gGoNeR6o_nuw/viewform" className="pricing-btn pricing-btn-secondary" target="_blank" rel="noopener noreferrer">
+                  Join Waitlist
+                </a>
                 <div className="pricing-features">
-                  <div className="pricing-feature"><Check size={14} /><span>Launch 1 Startup</span></div>
-                  <div className="pricing-feature"><Check size={14} /><span>Submission to 20 Directories</span></div>
-                  <div className="pricing-feature"><Check size={14} /><span>Standard Backlink Speed</span></div>
-                  <div className="pricing-feature"><Check size={14} /><span>API Listing Reports</span></div>
+                  <div className="pricing-feature"><Check size={14} /><span>1 Free Launch</span></div>
+                  <div className="pricing-feature"><Check size={14} /><span>30+ High-Authority Directories</span></div>
+                  <div className="pricing-feature"><Check size={14} /><span>AI-Powered Auto-Fill</span></div>
+                  <div className="pricing-feature"><Check size={14} /><span>Backlink Report Included</span></div>
                 </div>
               </div>
 
-              {/* $50.00 Launch Unlimited Card */}
+              {/* $30 Per Launch Card */}
               <div className="pricing-card premium">
-                <span className="pricing-badge">Founder Special</span>
-                <span className="pricing-name">Launch Unlimited</span>
-                <p className="pricing-desc">Launch as many startups as you can build. The ultimate execution tier.</p>
+                <span className="pricing-badge">Most Popular</span>
+                <span className="pricing-name">Pay Per Launch</span>
+                <p className="pricing-desc">Submit your SaaS to 30+ high-authority sites instantly with our AI agent.</p>
                 <div className="pricing-price-box">
-                  <span className="pricing-price">$50.00</span>
-                  <span className="pricing-term">/ month</span>
+                  <span className="pricing-price">$30</span>
+                  <span className="pricing-term">/ launch</span>
                 </div>
-                <button className="pricing-btn pricing-btn-primary" onClick={() => alert("Proceeding to premium secure checkout...")}>
-                  Get Launch Unlimited
-                </button>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfuvPq7rPASFY0wUuVDJT2iivYEtle29wrTK1gGoNeR6o_nuw/viewform" className="pricing-btn pricing-btn-primary" target="_blank" rel="noopener noreferrer">
+                  Join Waitlist
+                </a>
                 <div className="pricing-features">
-                  <div className="pricing-feature"><Check size={14} /><span className="pricing-feature-bold">Unlimited Startups</span></div>
-                  <div className="pricing-feature"><Check size={14} /><span>Submission to 20 Directories</span></div>
-                  <div className="pricing-feature"><Check size={14} /><span>Instant Priority Queue API</span></div>
-                  <div className="pricing-feature"><Check size={14} /><span>Auto SEO indexing refreshers</span></div>
-                  <div className="pricing-feature"><Check size={14} /><span>Dedicated launch manager support</span></div>
+                  <div className="pricing-feature"><Check size={14} /><span className="pricing-feature-bold">30+ High-Authority Sites</span></div>
+                  <div className="pricing-feature"><Check size={14} /><span>AI-Powered Form Autofill</span></div>
+                  <div className="pricing-feature"><Check size={14} /><span>Priority Submission Queue</span></div>
+                  <div className="pricing-feature"><Check size={14} /><span>SEO Backlink Report</span></div>
+                  <div className="pricing-feature"><Check size={14} /><span>Dedicated Launch Support</span></div>
                 </div>
               </div>
             </div>
@@ -414,7 +413,7 @@ export default function Home() {
                   <li><a href="#pricing" className="footer-link">Pricing</a></li>
                 </ul>
               </div>
-              
+
               <div>
                 <div className="footer-column-title">Resources</div>
                 <ul className="footer-links">

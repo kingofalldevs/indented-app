@@ -71,35 +71,15 @@ export default function RootLayout({
     "offers": [
       {
         "@type": "Offer",
-        "price": "19.90",
+        "price": "0",
         "priceCurrency": "USD",
-        "name": "Launch Single Plan",
-        "priceSpecification": {
-          "@type": "UnitPriceSpecification",
-          "price": "19.90",
-          "priceCurrency": "USD",
-          "referenceQuantity": {
-            "@type": "QuantitativeValue",
-            "value": "1",
-            "unitCode": "MON"
-          }
-        }
+        "name": "Free Trial — 1 Launch"
       },
       {
         "@type": "Offer",
-        "price": "50.00",
+        "price": "30.00",
         "priceCurrency": "USD",
-        "name": "Launch Unlimited Plan",
-        "priceSpecification": {
-          "@type": "UnitPriceSpecification",
-          "price": "50.00",
-          "priceCurrency": "USD",
-          "referenceQuantity": {
-            "@type": "QuantitativeValue",
-            "value": "1",
-            "unitCode": "MON"
-          }
-        }
+        "name": "Pay Per Launch — 30+ High-Authority Sites"
       }
     ]
   };
