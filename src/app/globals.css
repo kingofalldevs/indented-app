@@ -1264,6 +1264,38 @@ a {
 .features-section {
   background-color: var(--bg-primary);
   padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Same black outlined transparent grid pattern as the hero */
+.features-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  background-position: center top;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Radial gradient mask to fade the grid toward edges */
+.features-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0) 15%, var(--bg-primary) 78%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Ensure content sits above the pseudo-elements */
+.features-section .container {
+  position: relative;
+  z-index: 3;
 }
 
 .features-header {
