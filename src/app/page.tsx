@@ -52,7 +52,7 @@ const TESTIMONIALS = [
   },
   {
     quote: "Our domain authority jumped noticeably in the first month. This is the smartest $19 I've spent on early-stage growth.",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
     name: "Alex L.",
     role: "Indie Hacker, NoteSync"
   },
